@@ -6,9 +6,7 @@
     
     <title>MLB Individual Game Player Performance | Mike Thompson</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="We predicted individual player performance on a game-by-game basis for purposes of constructing lineups for Daily Fantasy Sports (DFS).
-Data We used raw play-by-play data from Retrosheet.org, containing the results of every single at-bat since 2006. The data was processed to extract a range of information from each at-bat, and we checked aggregate team stats by year against BaseballReference.com to ensure the data was processed accurately.
-High-level categories of the features we included in our data are: individual player skill, opposing pitcher skill, park factors, lineup position, and skill of teammates close to player in the lineup.">
+    <meta name="description" content="Predict Points for Daily Fantasy Sports">
     <meta name="generator" content="Hugo 0.80.0" />
     
     
@@ -30,29 +28,23 @@ High-level categories of the features we included in our data are: individual pl
     
     
     <meta property="og:title" content="MLB Individual Game Player Performance" />
-<meta property="og:description" content="We predicted individual player performance on a game-by-game basis for purposes of constructing lineups for Daily Fantasy Sports (DFS).
-Data We used raw play-by-play data from Retrosheet.org, containing the results of every single at-bat since 2006. The data was processed to extract a range of information from each at-bat, and we checked aggregate team stats by year against BaseballReference.com to ensure the data was processed accurately.
-High-level categories of the features we included in our data are: individual player skill, opposing pitcher skill, park factors, lineup position, and skill of teammates close to player in the lineup." />
+<meta property="og:description" content="Predict Points for Daily Fantasy Sports" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://mthomp12.github.io/post/mlb/" />
 <meta property="article:published_time" content="2020-09-30T11:15:58-04:00" />
 <meta property="article:modified_time" content="2020-09-30T11:15:58-04:00" />
 <meta itemprop="name" content="MLB Individual Game Player Performance">
-<meta itemprop="description" content="We predicted individual player performance on a game-by-game basis for purposes of constructing lineups for Daily Fantasy Sports (DFS).
-Data We used raw play-by-play data from Retrosheet.org, containing the results of every single at-bat since 2006. The data was processed to extract a range of information from each at-bat, and we checked aggregate team stats by year against BaseballReference.com to ensure the data was processed accurately.
-High-level categories of the features we included in our data are: individual player skill, opposing pitcher skill, park factors, lineup position, and skill of teammates close to player in the lineup.">
+<meta itemprop="description" content="Predict Points for Daily Fantasy Sports">
 <meta itemprop="datePublished" content="2020-09-30T11:15:58-04:00" />
 <meta itemprop="dateModified" content="2020-09-30T11:15:58-04:00" />
-<meta itemprop="wordCount" content="730">
+<meta itemprop="wordCount" content="729">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MLB Individual Game Player Performance"/>
-<meta name="twitter:description" content="We predicted individual player performance on a game-by-game basis for purposes of constructing lineups for Daily Fantasy Sports (DFS).
-Data We used raw play-by-play data from Retrosheet.org, containing the results of every single at-bat since 2006. The data was processed to extract a range of information from each at-bat, and we checked aggregate team stats by year against BaseballReference.com to ensure the data was processed accurately.
-High-level categories of the features we included in our data are: individual player skill, opposing pitcher skill, park factors, lineup position, and skill of teammates close to player in the lineup."/>
+<meta name="twitter:description" content="Predict Points for Daily Fantasy Sports"/>
 
 	
   </head>
@@ -154,6 +146,10 @@ High-level categories of the features we included in our data are: individual pl
         
           <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">MLB Individual Game Player Performance</h1>
           
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Predict Points for Daily Fantasy Sports
+            </h2>
+          
         
       </div>
     </div>
@@ -248,9 +244,9 @@ Total &amp; 2.99\%  &amp; 7.51 &amp; 9.83 \\\<br>
 \end{array}
 $$</p>
 <p>We were able to acheive a 12% improvement over our benchmark, and captured 42% of the theoretical maximum possible variance that can be explained. We believe further improvements can be made by incorporating
-the data not included as described above.</p>
+the data not included, as described above.</p>
 <p>Once we are done improving the model, the next step is to construct 150 hypothetical lineups per day, designed to maximize expected value and variance of individual rosters, and minimize correlation amongst rosters. 
-This will provide the best oppurtunity to take advantage of the top heavy payout structure used for these competitions. Results from historical competitions can be used to construct hypothetical profit and loss.</p>
+This will provide the best opportunity to take advantage of the top-heavy payout structure used for these competitions. Results from historical competitions can be used to construct hypothetical profit and loss.</p>
 <ul class="pa0">
   
 </ul>
