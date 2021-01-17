@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> Projects on Mike Thompson</title>
+    <link>https://mthomp12.github.io/post/</link>
+    <description>Recent content in  Projects on Mike Thompson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Mar 2020 12:00:00 -0500</lastBuildDate><atom:link href="https://mthomp12.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Poker AI</title>
+      <link>https://mthomp12.github.io/post/poker-ai/</link>
+      <pubDate>Sun, 22 Nov 2020 11:15:58 -0400</pubDate>
+      
+      <guid>https://mthomp12.github.io/post/poker-ai/</guid>
+      <description>Environment We created a simplified version of heads-up limit Texas hold&amp;rsquo;em. The action ends at the flop (turn and river cards are excluded) and each player only has one chance to bet each round. If the round starts with the first player betting, the second player can reraise, but the first player&amp;rsquo;s response options are limited to call or fold. This limits each betting round to at most 3 actions. The big blind is 2 chips, the preflop bet is 2 chips, and the flop bet is 4 chips.</description>
+    </item>
+    
+    <item>
+      <title>MLB Individual Game Player Performance</title>
+      <link>https://mthomp12.github.io/post/mlb/</link>
+      <pubDate>Wed, 30 Sep 2020 11:15:58 -0400</pubDate>
+      
+      <guid>https://mthomp12.github.io/post/mlb/</guid>
+      <description>We predicted individual player performance on a game-by-game basis for purposes of constructing lineups for Daily Fantasy Sports (DFS).
+Data We used raw play-by-play data from Retrosheet.org, containing the results of every single at-bat since 2006. The data was processed to extract a range of information from each at-bat, and we checked aggregate team stats by year against BaseballReference.com to ensure the data was processed accurately.
+High-level categories of the features we included in our data are: individual player skill, opposing pitcher skill, park factors, lineup position, and skill of teammates close to player in the lineup.</description>
+    </item>
+    
+    <item>
+      <title>Back Propagation</title>
+      <link>https://mthomp12.github.io/post/back_propagation/</link>
+      <pubDate>Sun, 05 Jul 2020 11:15:58 -0400</pubDate>
+      
+      <guid>https://mthomp12.github.io/post/back_propagation/</guid>
+      <description>As part of class, we looked at a simple Neural Net with one hidden layer. The Neural Net uses hyperbolic tangent for the input layer activation and sigmoid for the hidden layer activation. The forward pass is shown below:
+$Z_{1} = W_1 X + B_1 \\\
+A_1 = tanh(Z_1) \\\
+Z_2 = W_2 A_1 + B_2 \\\
+A_2 = (1 + e^{-Z_2})^{-1} \\\
+J = -\frac{1}{n}\sum_{1}^{n}{(Y log(A_2) + (1-Y) log(1-A_2))} \\\ $</description>
+    </item>
+    
+  </channel>
+</rss>

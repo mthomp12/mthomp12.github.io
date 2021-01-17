@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Poker AI | Mike Thompson</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Reinforcement Learning">
+    <meta name="generator" content="Hugo 0.80.0" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="https://mthomp12.github.io/dist/css/app.4fc0b62e4b82c997bb0041217cd6b979.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+
+    
+
+    
+    
+    <meta property="og:title" content="Poker AI" />
+<meta property="og:description" content="Reinforcement Learning" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://mthomp12.github.io/post/poker-ai/" />
+<meta property="article:published_time" content="2020-11-22T11:15:58-04:00" />
+<meta property="article:modified_time" content="2020-11-22T11:15:58-04:00" />
+<meta itemprop="name" content="Poker AI">
+<meta itemprop="description" content="Reinforcement Learning">
+<meta itemprop="datePublished" content="2020-11-22T11:15:58-04:00" />
+<meta itemprop="dateModified" content="2020-11-22T11:15:58-04:00" />
+<meta itemprop="wordCount" content="1250">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Poker AI"/>
+<meta name="twitter:description" content="Reinforcement Learning"/>
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://mthomp12.github.io/images/poker.jpg');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://mthomp12.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Mike Thompson
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://mthomp12.github.io/post/" title=" Projects page">
+               Projects
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://mthomp12.github.io/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="https://mthomp12.github.io/tds/" title="Articles page">
+              Articles
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/mike-thompson-78655b13/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/mthomp12?tab=repositories" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+<a href="https://medium.com/@mthomp12" target="_blank" class="link-transition medium link dib z-999 pt3 pt0-l mr1" title="Medium link" rel="noopener" aria-label="follow on Medium——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 170 170;" version="1.1" viewBox="0 0 170 170" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        
+          <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Poker AI</h1>
+          
+            <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+              Reinforcement Learning
+            </h2>
+          
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw9 center ph4">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked">
+          
+         PROJECTS
+      </aside>
+      
+      <h1 class="f1 athelas mt3 mb1">Poker AI</h1>
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2020-11-22T11:15:58-04:00">November 22, 2020</time>
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><h2 id="environment">Environment</h2>
+<p>We created a simplified version of heads-up limit Texas hold&rsquo;em. The action ends
+at the flop (turn and river cards are excluded) and each player only has one chance to bet each round.
+If the round starts with the first player betting, the second player can reraise, but the first player&rsquo;s
+response options are limited to call or fold. This limits each betting round to at most 3 actions.
+The big blind is 2 chips, the preflop bet is 2 chips, and the flop bet is 4 chips.
+Reraises are twice the amount of the bet for each round (4 for preflop and 8 for flop).</p>
+<h2 id="agent">Agent</h2>
+<p>The Agent needs to make decisions as both dealer and first position and their choices depend on the
+other&rsquo;s action. For example, during the preflop betting round, the dealer&rsquo;s first decision is whether to
+fold, call the big blind, or bet 2 chips.
+The dealer may have another decision to make if first position bets or reraises. In both of these instances, the agent&rsquo;s decision
+is whether to call or fold, since each player is only allowed to bet/raise on their first decision of each round.</p>
+<h2 id="stateaction-pairs">State/Action Pairs</h2>
+<p>The total number of states was infeasibility large for us to run enough simulations to accurately populate our Q-matrix during the time we had to complete this project,
+so we had to make intelligent simplifications. We included position (dealer vs. first position), hole cards, betting history, and hole card contribution to hand strength
+(in lieu of recording actual board cards, which greatly reduces the number of states).</p>
+<p><strong>Preflop</strong><br>
+1.) Position: 2 (Dealer/First Position )<br>
+2.) Hole Card Rank: 169 ($13^2$ unordered but suited vs. non-suited)<br>
+3.) Action: 4 (Fold/Check/Call/Bet/Reraise or Call Reraise)</p>
+<p><strong>Flop</strong><br>
+1.) Position: 2 (Dealer/First Position)<br>
+2.) Preflop Betting: 4 (neither/dealer bets/first position bets/both)<br>
+3.) Hand Rank: 9 (high card/pair/$\dots$/straight &amp; royal flush)<br>
+4.) Hole Card Rank: 91 (Remove Suited Distinction$^1$: $ \sum_{n=1}^{13} n$ )<br>
+5.) Hole Card Hand Contribution: up to 20 (depends on hand rank)<br>
+6.) Action: 4 (Fold/Check/Call/Bet/Reraise or Call Reraise)</p>
+<p>$^1$since player either has flush or not at this point, which is already captured by hand rank</p>
+<h2 id="rewards">Rewards</h2>
+<p>Your opponent bets 4 to make the pot 12 chips in total. You have a low-to-medium strength hand, should you call or fold? If you estimate that 25% of the time
+your opponent is bluffing with a weaker hand, then your expected value is break-even: 0.25 * 12 - 0.75 * 4 = 0.</p>
+<p>It is obvious the sign of the reward depends on the outcome of the hand, but from the above example, we see that the magnitude is also dependent on
+the outcome. If the player wins the pot, the value of the decision was +12, but if the player loses the hand, the value was -4. By simulating a
+large number of hands, the Q-matrix will be populated with roughly the correct value since ~75% of the simulations the value will be -4
+and ~25% of the time the value will be +12, resulting in the correct expected value of the decision equal to 0. (Note the probabilities
+are implicitedly determined from training, they do not need to be calculated).</p>
+<p>The amount to record for winning hands is the total value of the pot at the point of the decision plus the value of any chips called by the opponent if the action was to bet. The amount to record in the event
+the player loses is the amount of the bet.</p>
+<h2 id="decision-making">Decision Making</h2>
+<p>The Q-matrix stores the value of each possible decision given each possible state. The AI makes their decision by taking the action that has the highest value for the given state.</p>
+<p>For example, in a hand where the AI is in first position and has pocket 9&rsquo;s,
+the Q-values for preflop are check: 2.71, call: 4.03, bet: 3.93 , reraise: 6.73 (folding is always worth 0). Since first position acts second during the preflop betting round, their choices are to either check or bet if the dealer calls the blind.
+They can fold, call, or reraise if the dealer bets. Since betting is worth more than checking, the AI will bet when the opponent calls the blind, and since reraising is positive and worth more than calling, the AI will reraise if the opponent bets.</p>
+<p>Let&rsquo;s assume the opponent calls the blind and therefore the AI bets and then the opponent calls. The flop is then dealt and let&rsquo;s say there are no board pairs, with one board card higher than 9. The Q-values in this situation
+are check: 5.96, call: 5.85, bet: 6.18, and call reraise: 1.9. Since betting is worth more than checking, the AI will bet. If the opponent folds or calls no further decision is necessary. If the opponent reraises, then the AI will call since
+calling a reraise is positive (folding is 0).</p>
+<h2 id="training">Training</h2>
+<p>The Q-matrix starts with all values set to 0. We simulated over 25M hands with a dealer AI playing against a first position AI. Each decision has a 10% chance of being random, the other 90% are made based on the highest Q-value at that point in time
+(for training purposes only, the final AI always makes their decision based on highest Q-value). If the decision is non-random and two states have the same value, then the more aggresive action is take.
+At the conclusion of each hand, the Q-matrix is updated with the results of the hand, equal to 90% of the prior value plus 10% (the learning rate) of the reward for that particular hand. Taking occasional random actions and limiting the learning rate helps ensure the AI does not get stuck in suboptimal decisions.</p>
+<h2 id="gui">GUI</h2>
+<p>We created a GUI using the tkinter Python package so we could play against the AI to evaluate its decision-making. The program can be downloaded from my
+<a href="https://github.com/mthomp12/Poker_AI">GitHub</a> and played by running the &ldquo;Poker GUI.py&rdquo; script. Here is a picture of the GUI:
+<figure>
+    <img src="https://mthomp12.github.io/images/poker%20GUI.png"/> 
+</figure>
+</p>
+<h2 id="results-and-future-work">Results and Future Work</h2>
+<p>The AI is fairly competent, but occasionally makes suboptimal decisions. Out of 5 people that played against our AI, 3 lost money and 2 made money. One winner consistently won during their first 400 hands before a losing streak during the last 100. One of the losers
+consistently lost money. The consistent winner made significant real money playing poker professionally when it was legal to play online. Our AI probably is not better than a poker professional, but was competitive against casual players that have a probability and stats background.</p>
+<p>Profit vs Hand History by Player:
+<figure>
+    <img src="https://mthomp12.github.io/images/plot.png"/> 
+</figure>
+</p>
+<p>We believe we&rsquo;ve identified the cause of why our AI occasionally makes suboptimal decisions (e.g. checking instead of betting when they had top pair). The graph below shows the impact of
+the learning rate on the hypothetical situation described above (25% win probability, bet of 4 chips, 12 chips in pot). The chart shows the Q-matrix value for this situation calculated
+over 10,000 simulations.</p>
+<figure>
+    <img src="https://mthomp12.github.io/images/learn_rate.png"/> 
+</figure>
+
+<p>We know the correct value should be 0, but the learning rate we used of 10%
+eventually oscillates between -2 to 2. A smaller learning rate of 1% oscillates between approximately -0.25 to 0.25. Clearly our learning rate was too high, and since these values will not converge to a solution,
+we believe averaging Q-matrix values over a number of simulations (once a certain threshold of simulations has been met for that particular state/action pair) will provide significantly improved decision-making.
+We found an <a href="https://arxiv.org/abs/1611.01929">arXiv article</a> that supports this theory.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://mthomp12.github.io/" >
+    &copy;  Mike Thompson 2021 
+  </a>
+    <div>
+
+
+
+
+
+
+
+<a href="https://www.linkedin.com/in/mike-thompson-78655b13/" target="_blank" class="link-transition linkedin link dib z-999 pt3 pt0-l mr1" title="LinkedIn link" rel="noopener" aria-label="follow on LinkedIn——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 65 65;" version="1.1" viewBox="0 0 65 65" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M50.837,48.137V36.425c0-6.275-3.35-9.195-7.816-9.195  c-3.604,0-5.219,1.983-6.119,3.374V27.71h-6.79c0.09,1.917,0,20.427,0,20.427h6.79V36.729c0-0.609,0.044-1.219,0.224-1.655  c0.49-1.22,1.607-2.483,3.482-2.483c2.458,0,3.44,1.873,3.44,4.618v10.929H50.837z M22.959,24.922c2.367,0,3.842-1.57,3.842-3.531  c-0.044-2.003-1.475-3.528-3.797-3.528s-3.841,1.524-3.841,3.528c0,1.961,1.474,3.531,3.753,3.531H22.959z M34,64  C17.432,64,4,50.568,4,34C4,17.431,17.432,4,34,4s30,13.431,30,30C64,50.568,50.568,64,34,64z M26.354,48.137V27.71h-6.789v20.427  H26.354z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+<a href="https://github.com/mthomp12?tab=repositories" target="_blank" class="link-transition github link dib z-999 pt3 pt0-l mr1" title="Github link" rel="noopener" aria-label="follow on Github——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+<a href="https://medium.com/@mthomp12" target="_blank" class="link-transition medium link dib z-999 pt3 pt0-l mr1" title="Medium link" rel="noopener" aria-label="follow on Medium——Opens in a new window">
+  <svg  height="32px"  style="enable-background:new 0 0 170 170;" version="1.1" viewBox="0 0 170 170" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M46.5340803,65.2157554 C46.6968378,63.6076572 46.0836,62.018231 44.8828198,60.93592 L32.6512605,46.2010582 L32.6512605,44 L70.6302521,44 L99.9859944,108.380952 L125.794585,44 L162,44 L162,46.2010582 L151.542017,56.2281011 C150.640424,56.9153477 150.193188,58.0448862 150.380019,59.1628454 L150.380019,132.837155 C150.193188,133.955114 150.640424,135.084652 151.542017,135.771899 L161.755369,145.798942 L161.755369,148 L110.38282,148 L110.38282,145.798942 L120.963119,135.527337 C122.002801,134.487948 122.002801,134.182246 122.002801,132.592593 L122.002801,73.0417402 L92.585901,147.755438 L88.6106443,147.755438 L54.3622782,73.0417402 L54.3622782,123.115814 C54.0767278,125.221069 54.7759199,127.3406 56.2581699,128.863022 L70.0186741,145.55438 L70.0186741,147.755438 L31,147.755438 L31,145.55438 L44.7605042,128.863022 C46.2319621,127.338076 46.8903838,125.204485 46.5340803,123.115814 L46.5340803,65.2157554 Z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+
+<span class="new-window"><svg  height="8px"  style="enable-background:new 0 0 1000 1000;" version="1.1" viewBox="0 0 1000 1000" width="8px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+<path d="M598 128h298v298h-86v-152l-418 418-60-60 418-418h-152v-86zM810 810v-298h86v298c0 46-40 86-86 86h-596c-48 0-86-40-86-86v-596c0-46 38-86 86-86h298v86h-298v596h596z" style="fill-rule:evenodd;clip-rule:evenodd;fill:;"/>
+</svg>
+</span></a>
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="https://mthomp12.github.io/dist/js/app.3fc0f988d21662902933.js"></script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+	processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+  </body>
+</html>
